@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ## Livestream Chat tutorial ##
 
 Technologies used
@@ -21,7 +20,7 @@ The wowza player is using HTML5 video capabilities. You can wrap it in a react c
 We did a little wrapper around it using react.
 
 ### Step 6 - Hook up some cool effects for reactions
-=======
+
 # livestream-chat
 Livestream chat example doing both livestream and chat
->>>>>>> 73adb6348f0dacc4f316362abe548062ddf970f3
+
