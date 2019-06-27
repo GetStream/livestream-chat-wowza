@@ -11,3 +11,91 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-1383/bg.png') top left no-repeat;
+  background-size: cover;
+}
+
+.example-video-container {
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+/*   padding: 20px; */
+}
+
+.player-wrapper {
+  position: relative;
+  padding-top: 56.25% /* Player ratio: 100 / (1280 / 720) */
+}
+
+.react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#playerElement {
+  width:100%; height:0; padding:0 0 56.25% 0
+}
+.example-video {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.videoWrapper {
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	padding-top: 25px;
+	height: 0;
+}
+.videoWrapper iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+
+}
+
+.example-video img {
+  width: inherit;
+  height: inherit;
+  object-fit: cover;
+}
+
+.str-chat__container {
+  min-width: 375px;
+  max-width: 500px;
+  width: 100%;
+  background: #1a1a1a;
+}
+
+@media screen and (max-width: 960px) {
+  .str-chat__container {
+    max-width: 375px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  #root {
+    flex-direction: column;
+  }
+  .str-chat__container {
+    max-width: 640px;
+  }
+}
