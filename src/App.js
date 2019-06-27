@@ -20,26 +20,26 @@ chatClient.setUser(
   userToken,
 );
 
-const channel = chatClient.channel('livestream', 'godevs', {
+const channel = chatClient.channel('livestream', 'rocketlaunch3', {
   // add as many custom fields as you'd like
-  image: 'https://cdn.chrisshort.net/testing-certificate-chains-in-go/GOPHER_MIC_DROP.png',
-  name: 'Talk about Go',
+  image: 'https://image.flaticon.com/icons/svg/201/201901.svg',
+  name: 'Rocket Launch Central',
 });
 
 const playbackId = "8W4dsnSoF95U00UQP8Zk01vWcqs3vLjpQQ";
 let url = "https://stream.mux.com/"+playbackId+".m3u8";
-url = 'https://wowzaprod263-i.akamaihd.net/hls/live/829886/9996c14d/playlist.m3u8'
+url = 'https://stream.mux.com/a5LFXNgjonhofUbuNQwV6OXPmnURfu21.m3u8'
 
 function App() {
   return (
     //<div id="playerElement"></div>
-    // //<ReactPlayer url='https://www.youtube.com/watch?v=XcnHOQ-cHa0' playing />
+    // <ReactPlayer url={url} playing  className='react-player' width='100%'
+  // height='100%' />
     <React.Fragment>
       <div className="example-video-container">
         <div className="example-video">
           <div className="videoWrapper player-wrapper">
-            <ReactPlayer url={url} playing  className='react-player' width='100%'
-          height='100%' />
+<div id='wowza_player'></div>
           </div>
         </div>
       </div>
