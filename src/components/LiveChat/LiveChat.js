@@ -95,13 +95,17 @@ class LiveChat extends Component {
         };
     }
 
+    renderMessage(props) {
+        return <MessageLivestream {...props} />;
+    }
+
     render() {
         return (
             <Chat client={chatClient} theme={"livestream dark"}>
                 <Channel channel={channel}>
                     <Window hideOnThread>
                         <ChannelHeader live watcher_count />
-                        <MessageList Message={MessageLivestream} />
+                        <MessageList Message={this.renderMessage} />
                         <Reward ref={this.setRewardRef} type='emoji' config={this.rewardConfig}>
                             <MessageInput />
                         </Reward>
