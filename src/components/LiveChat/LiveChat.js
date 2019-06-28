@@ -44,8 +44,15 @@ class LiveChat extends Component {
         this.setRewardRef = this.setRewardRef.bind(this);
     }
 
-    componentDidMount() {
+    async componentDidMount() {
+        await channel.watch();
         channel.on("message.new", this.handleNewMessage);
+        channel.on("reaction.new", this.handleNewReaction);
+    }
+
+    componentWillUnmount() {
+        channel.off("message.new", this.handleNewMessage);
+        channel.off("reaction.new", this.handleNewReaction);
     }
 
     handleNewMessage = async ({ message }) => {
@@ -58,8 +65,24 @@ class LiveChat extends Component {
         }
     };
 
+    handleNewReaction = async ({ reaction }) => {
+        const emojiMap = {
+            like: ["👍"],
+            love: ["❤️", "💙", "💚", "💛", "💜", "🧡"],
+            haha: ["😂", "🤣"],
+            wow: ["😲", "😦", "😮"],
+            sad: ["😔", "😢", "😭"],
+            angry: ["😠", "😡"],
+        };
+
+        await this.setState({
+            emoji: emojiMap[reaction.type],
+        });
+
+        this.reward.rewardMe();
+    };
+
     setRewardRef(el) {
-        console.log(el);
         this.reward = el;
     }
 
@@ -68,6 +91,7 @@ class LiveChat extends Component {
         return {
             emoji,
             elementSize: 40,
+            spread: 160,
         };
     }
 
