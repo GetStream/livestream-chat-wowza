@@ -22,7 +22,8 @@ class Login extends Component {
             [name]: value,
         });
 
-    handleSubmit = async () => {
+    handleSubmit = async (e) => {
+        e.preventDefault();
         const { history } = this.props;
         const { username } = this.state;
         await this.setState({
@@ -45,16 +46,18 @@ class Login extends Component {
                     <p>
                         live.<span>stream</span>
                     </p>
-                    <input
-                        minLength='1'
-                        name='username'
-                        onChange={this.handleChange}
-                        value={username}
-                        placeholder='Enter a username'
-                    />
-                    <button onClick={this.handleSubmit}>
-                        {loading ? <Spinner size='16px' spinnerWidth={2} spinnerColor='white' /> : "Login"}
-                    </button>
+                    <form onSubmit={this.handleSubmit}>
+                        <input
+                            minLength='1'
+                            name='username'
+                            onChange={this.handleChange}
+                            value={username}
+                            placeholder='Enter a username'
+                        />
+                        <button type='submit'>
+                            {loading ? <Spinner size='16px' spinnerWidth={2} spinnerColor='white' /> : "Login"}
+                        </button>
+                    </form>
                 </div>
                 <Credit />
             </div>
