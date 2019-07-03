@@ -4,6 +4,12 @@ import { Chat, Channel, Window, Thread, ChannelHeader, MessageList, MessageInput
 import { extractEmoji } from "extract-emoji";
 import Reward from "react-rewards";
 
+// contexts //
+import LivestreamContext from "contexts/LivestreamContext";
+
+// Components //
+import ChatHeader from "./ChatHeader";
+
 // Styles //
 import "./styles.css";
 
@@ -15,12 +21,10 @@ const loveKeywords = ["love", "like", "amazing"];
 const wowKeywords = ["woah", "wow", "omg", "wtf"];
 
 class LiveChat extends Component {
+    static contextType = LivestreamContext;
+
     constructor(props) {
         super(props);
-
-        this.state = {
-            emoji: ["🚀"],
-        };
         chatClient.disconnect();
         chatClient.setUser(
             {
@@ -29,23 +33,47 @@ class LiveChat extends Component {
             localStorage.getItem("token"),
         );
 
-        this.channel = chatClient.channel("livestream", "live_stream_mux", {
-            image: "https://mux.com/files/mux-video-logo-square.png",
-            name: "Stream + Mux: Livestream Chat",
-        });
-
         this.setRewardRef = this.setRewardRef.bind(this);
+
+        this.state = {
+            channel: chatClient.channel("livestream", `live_stream_${props.provider}`, {
+                image: "https://mux.com/files/mux-video-logo-square.png",
+                name: `Stream + ${props.provider}`,
+                name: `Stream + ${props.provider}`,
+            }),
+            emoji: ["🚀"],
+        };
     }
 
     async componentDidMount() {
-        await this.channel.watch();
-        this.channel.on("message.new", this.handleNewMessage);
-        this.channel.on("reaction.new", this.handleNewReaction);
+        await this.state.channel.watch();
+        console.log(this.state.channel);
+        this.state.channel.on("message.new", this.handleNewMessage);
+        this.state.channel.on("reaction.new", this.handleNewReaction);
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.provider !== this.props.provider) {
+            this.state.channel.off("message.new", this.handleNewMessage);
+            this.state.channel.off("reaction.new", this.handleNewReaction);
+            this.setState(
+                {
+                    channel: chatClient.channel("livestream", `live_stream_${this.props.provider}`, {
+                        image: "https://mux.com/files/mux-video-logo-square.png",
+                        name: `Stream + ${this.props.provider}`,
+                    }),
+                },
+                () => {
+                    this.state.channel.on("message.new", this.handleNewMessage);
+                    this.state.channel.on("reaction.new", this.handleNewReaction);
+                },
+            );
+        }
     }
 
     componentWillUnmount() {
-        this.channel.off("message.new", this.handleNewMessage);
-        this.channel.off("reaction.new", this.handleNewReaction);
+        this.state.channel.off("message.new", this.handleNewMessage);
+        this.state.channel.off("reaction.new", this.handleNewReaction);
         chatClient.disconnect();
     }
 
@@ -115,29 +143,36 @@ class LiveChat extends Component {
     }
 
     render() {
+        const { provider } = this.props;
         return (
-            <Chat client={chatClient} theme='livestream dark'>
-                <Channel channel={this.channel}>
-                    <div className='emoji-wrapper'>
-                        <Reward
-                            decay={1}
-                            decay={2000}
-                            zIndex={999}
-                            ref={this.setRewardRef}
-                            type='emoji'
-                            config={this.rewardConfig}
-                        />
-                    </div>
-                    <Window hideOnThread>
-                        <ChannelHeader live watcher_count />
-                        <MessageList Message={this.renderMessage} />
-                        <MessageInput />
-                    </Window>
-                    <Thread Message={Message} fullWidth />
-                </Channel>
-            </Chat>
+            <div className='chat-wrapper'>
+                <Chat client={chatClient} theme='livestream dark'>
+                    <Channel channel={this.state.channel}>
+                        <div className='emoji-wrapper'>
+                            <Reward
+                                decay={1}
+                                decay={2000}
+                                zIndex={999}
+                                ref={this.setRewardRef}
+                                type='emoji'
+                                config={this.rewardConfig}
+                            />
+                        </div>
+                        <Window hideOnThread>
+                            <ChatHeader data={this.state.channel.data} />
+                            <MessageList Message={this.renderMessage} />
+                            <MessageInput />
+                        </Window>
+                        <Thread Message={Message} fullWidth />
+                    </Channel>
+                </Chat>
+            </div>
         );
     }
 }
 
-export default LiveChat;
+export default (props) => (
+    <LivestreamContext.Consumer>
+        {({ provider }) => <LiveChat {...props} provider={provider} />}
+    </LivestreamContext.Consumer>
+);

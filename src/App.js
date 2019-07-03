@@ -8,15 +8,18 @@ import Login from "screens/Login";
 import LiveStream from "screens/LiveStream";
 
 // Components //
+import LivestreamProvider from "components/LivestreamProvider";
 import AuthedRoute from "components/AuthedRoute";
 
 const App = () => (
-    <Router>
-        <Switch>
-            <Route path='/login' component={Login} />
-            <AuthedRoute path='/' component={LiveStream} />
-        </Switch>
-    </Router>
+    <LivestreamProvider>
+        <Router>
+            <Switch>
+                <Route path='/login' component={Login} />
+                <AuthedRoute path='/' component={LiveStream} />
+            </Switch>
+        </Router>
+    </LivestreamProvider>
 );
 
 export default App;

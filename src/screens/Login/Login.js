@@ -4,9 +4,8 @@ import Spinner from "react-spinner-material";
 // Utils //
 import fetch from "utils/fetch";
 
-// Components
-import Logo from "components/Logo";
-import Credit from "components/Credit";
+// Assets //
+import StreamLogo from "assets/stream_logo.svg";
 
 // Styles //
 import "./styles.css";
@@ -42,7 +41,7 @@ class Login extends Component {
         return (
             <div className='login-root'>
                 <div className='login-card'>
-                    <Logo width={40} height={20} fill='#2f7deb' />
+                    <img id='logo' src={StreamLogo} />
                     <p>
                         live.<span>stream</span>
                     </p>
@@ -59,7 +58,6 @@ class Login extends Component {
                         </button>
                     </form>
                 </div>
-                <Credit />
             </div>
         );
     }

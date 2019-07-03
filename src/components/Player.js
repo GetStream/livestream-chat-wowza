@@ -3,7 +3,6 @@ import ReactPlayer from "react-player";
 
 // Components //
 import Credit from "components/Credit";
-import Logo from "components/Logo";
 import NotStreamingIcon from "components/Icons/not_streaming";
 
 class Player extends Component {
@@ -34,17 +33,6 @@ class Player extends Component {
     render() {
         const { error } = this.state;
 
-        if (error) {
-            return (
-                <div className='player-wrapper'>
-                    <div className='player-error'>
-                        <NotStreamingIcon width={64} height={64} fill='#fa4659' />
-                        <p style={{ color: "white" }}>No Longer Streaming</p>
-                        <Credit />
-                    </div>
-                </div>
-            );
-        }
         return (
             <div className='player-wrapper'>
                 <ReactPlayer
@@ -52,7 +40,11 @@ class Player extends Component {
                     controls
                     muted
                     config={this.playerConfig}
-                    url='https://stream.mux.com/a5LFXNgjonhofUbuNQwV6OXPmnURfu21.m3u8'
+                    url={
+                        error
+                            ? "https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8"
+                            : "https://stream.mux.com/a5LFXNgjonhofUbuNQwV6OXPmnURfu21.m3u8"
+                    }
                     playing
                     width='100%'
                     height='100%'

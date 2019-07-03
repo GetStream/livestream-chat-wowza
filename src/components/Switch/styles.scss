@@ -1,0 +1,24 @@
+@import "@material/react-switch/index.scss";
+
+// refer to element in Javascript portion below
+.material-switch.mdc-switch.mdc-switch--checked .mdc-switch__thumb,
+.mdc-switch.mdc-switch--checked .mdc-switch__track {
+    background-color: #ff8400 !important;
+    border-color: #ff8400 !important;
+}
+
+.material-switch .mdc-switch__thumb-underlay::before,
+.material-switch .mdc-switch__thumb-underlay::after {
+    background-color: #ff8400 !important;
+}
+
+.material-switch.mdc-switch:not(.mdc-switch--checked) .mdc-switch__thumb,
+.mdc-switch:not(.mdc-switch--checked) .mdc-switch__track {
+    background-color: #f21786 !important;
+    border-color: #f21786 !important;
+}
+
+.material-switch.mdc-switch:not(.mdc-switch--checked) .mdc-switch__thumb-underlay::before,
+.material-switch.mdc-switch:not(.mdc-switch--checked) .mdc-switch__thumb-underlay::after {
+    background-color: #f21786 !important;
+}

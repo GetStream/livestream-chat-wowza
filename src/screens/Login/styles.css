@@ -26,6 +26,10 @@
     align-items: stretch;
 }
 
+.login-card img {
+    align-self: flex-start;
+}
+
 .login-card p {
     margin: 16px 0px 8px 0px;
     font-family: "Roboto Mono", monospace;
