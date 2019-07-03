@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import ReactPlayer from "react-player";
 
+// Components //
+import Credit from "components/Credit";
+import Logo from "components/Logo";
+import NotStreamingIcon from "components/Icons/not_streaming";
+
 class Player extends Component {
     constructor(props) {
         super(props);
@@ -33,7 +38,9 @@ class Player extends Component {
             return (
                 <div className='player-wrapper'>
                     <div className='player-error'>
+                        <NotStreamingIcon width={64} height={64} fill='#fa4659' />
                         <p style={{ color: "white" }}>No Longer Streaming</p>
+                        <Credit />
                     </div>
                 </div>
             );
@@ -51,6 +58,7 @@ class Player extends Component {
                     height='100%'
                     onError={this.handleError}
                 />
+                <Credit />
             </div>
         );
     }

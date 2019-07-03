@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono:300,400&display=swap");
+
 * {
     outline: none;
 }
@@ -19,13 +21,19 @@ body {
     overflow: hidden;
     margin: 0;
     padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+p {
+    margin: 0;
 }
 
 #root {
+    height: 100%;
     width: 100%;
     display: flex;
     justify-content: flex-end;
-    background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-1383/bg.png") top left no-repeat;
     background-size: cover;
 }
 
@@ -35,6 +43,24 @@ body {
     justify-content: center;
     display: flex;
     /*   padding: 20px; */
+}
+
+p.credit {
+    transition: 0.3s ease-in-out transform;
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    font-size: 16px;
+    margin: 16px;
+    color: rgba(255, 255, 255, 0.48) !important;
+}
+
+p.credit span {
+    margin: 0px 8px;
+}
+
+p.credit img {
+    max-width: 48px;
 }
 
 #playerElement {

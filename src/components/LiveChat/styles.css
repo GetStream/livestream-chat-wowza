@@ -1,0 +1,65 @@
+/* Main */
+.str-chat.livestream.dark,
+.str-chat__container {
+    position: relative;
+    background-color: #000000;
+    border-left: 1px solid #000000;
+    overflow: hidden;
+}
+
+.dark.str-chat .str-chat__message-simple-text-inner {
+    background-color: #ffffff;
+}
+
+/* Header */
+.livestream.str-chat.dark .str-chat__header-livestream {
+    background-color: #0d0f13;
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.56);
+}
+
+/* Message Bubbles */
+@supports (mix-blend-mode: multiply) {
+    .str-chat__main-panel:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        background: linear-gradient(rgb(255, 143, 178) 0%, rgb(167, 151, 255) 50%, rgb(0, 229, 255) 100%);
+        mix-blend-mode: multiply;
+        pointer-events: none;
+    }
+    .str-chat__message-simple-text-inner,
+    .str-chat__message-simple-text-inner a {
+        color: black !important;
+    }
+    .str-chat__message:not(.str-chat__message-simple--me) {
+        z-index: 1;
+    }
+    .str-chat__message-simple--me .str-chat__message-simple-text-inner {
+        background: white !important;
+    }
+    .dark.str-chat .str-chat__message-simple--me .str-chat__message-simple-text-inner--is-emoji {
+        background: transparent !important;
+        z-index: 1;
+        color: white;
+    }
+    .str-chat__message-simple-text-inner--is-emoji > p {
+        color: white;
+    }
+    .dark.str-chat .str-chat__message-simple .str-chat__message-attachment-card,
+    .dark.str-chat .str-chat__player-wrapper {
+        z-index: 1 !important;
+    }
+    .str-chat__avatar {
+        z-index: 1;
+    }
+    .dark.str-chat .str-chat__message-simple-data {
+        opacity: 1 !important;
+    }
+    .dark.str-chat .str-chat__input,
+    .str-chat__input-footer {
+        background: #0d0f13 !important;
+    }
+}
