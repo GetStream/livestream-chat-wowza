@@ -54,7 +54,7 @@
     .str-chat__message-simple--me .str-chat__message-simple-text-inner {
         background: white !important;
     }
-    .dark.str-chat .str-chat__message-simple--me .str-chat__message-simple-text-inner--is-emoji {
+    .dark.str-chat .str-chat__message-simple-text-inner--is-emoji {
         background: transparent !important;
         z-index: 1;
         color: white;
