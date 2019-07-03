@@ -20,6 +20,10 @@ const rocketKeywords = ["boom", "rocket", "liftoff"];
 const loveKeywords = ["love", "like", "amazing"];
 const wowKeywords = ["woah", "wow", "omg", "wtf"];
 
+const muxImg = "https://mux.com/files/mux-video-logo-square.png";
+const wowzaImg =
+    "https://media.licdn.com/dms/image/C4D0BAQE7CwCL3tSUHg/company-logo_200_200/0?e=2159024400&v=beta&t=un7iEFZMfnHSRZ8p9wsXVPu429opPpwH2vDVksLizKs";
+
 class LiveChat extends Component {
     static contextType = LivestreamContext;
 
@@ -37,7 +41,7 @@ class LiveChat extends Component {
 
         this.state = {
             channel: chatClient.channel("livestream", `live_stream_${props.provider}`, {
-                image: "https://mux.com/files/mux-video-logo-square.png",
+                image: props.provider === "mux" ? muxImg : wowzaImg,
                 name: `Stream + ${props.provider}`,
                 name: `Stream + ${props.provider}`,
             }),
@@ -59,7 +63,7 @@ class LiveChat extends Component {
             this.setState(
                 {
                     channel: chatClient.channel("livestream", `live_stream_${this.props.provider}`, {
-                        image: "https://mux.com/files/mux-video-logo-square.png",
+                        image: this.props.provider === "mux" ? muxImg : wowzaImg,
                         name: `Stream + ${this.props.provider}`,
                     }),
                 },
