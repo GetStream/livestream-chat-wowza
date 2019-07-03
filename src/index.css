@@ -50,7 +50,7 @@ p.credit {
     position: absolute;
     bottom: 16px;
     right: 16px;
-    font-size: 16px;
+    font-size: 16px !important;
     margin: 16px;
     color: rgba(255, 255, 255, 0.48) !important;
 }

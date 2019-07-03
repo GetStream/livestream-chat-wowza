@@ -10,6 +10,10 @@ import "./styles.css";
 // Stream Chat //
 const chatClient = new StreamChat(process.env.REACT_APP_STREAM_KEY);
 
+const rocketKeywords = ["boom", "rocket", "liftoff"];
+const loveKeywords = ["love", "like", "amazing"];
+const wowKeywords = ["woah", "wow", "omg", "wtf"];
+
 class LiveChat extends Component {
     constructor(props) {
         super(props);
@@ -45,11 +49,36 @@ class LiveChat extends Component {
         chatClient.disconnect();
     }
 
+    checkForKeywords(keyword, text) {
+        return new RegExp(keyword).test(text);
+    }
+
     handleNewMessage = async ({ message }) => {
         const emoji = extractEmoji(message.text);
         if (emoji.length) {
             await this.setState({
                 emoji,
+            });
+            this.reward.rewardMe();
+        }
+
+        if (rocketKeywords.some((keyword) => this.checkForKeywords(keyword, message.text))) {
+            await this.setState({
+                emoji: ["🚀"],
+            });
+            this.reward.rewardMe();
+        }
+
+        if (loveKeywords.some((keyword) => this.checkForKeywords(keyword, message.text))) {
+            await this.setState({
+                emoji: ["❤️", "😍"],
+            });
+            this.reward.rewardMe();
+        }
+
+        if (wowKeywords.some((keyword) => this.checkForKeywords(keyword, message.text))) {
+            await this.setState({
+                emoji: ["😲", "😦", "😮"],
             });
             this.reward.rewardMe();
         }
@@ -89,12 +118,20 @@ class LiveChat extends Component {
         return (
             <Chat client={chatClient} theme='livestream dark'>
                 <Channel channel={this.channel}>
+                    <div className='emoji-wrapper'>
+                        <Reward
+                            decay={1}
+                            decay={2000}
+                            zIndex={999}
+                            ref={this.setRewardRef}
+                            type='emoji'
+                            config={this.rewardConfig}
+                        />
+                    </div>
                     <Window hideOnThread>
                         <ChannelHeader live watcher_count />
                         <MessageList Message={this.renderMessage} />
-                        <Reward zIndex={1} ref={this.setRewardRef} type='emoji' config={this.rewardConfig}>
-                            <MessageInput />
-                        </Reward>
+                        <MessageInput />
                     </Window>
                     <Thread Message={Message} fullWidth />
                 </Channel>

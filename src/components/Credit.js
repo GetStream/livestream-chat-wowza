@@ -10,13 +10,16 @@ const Credit = () => (
     <p className='credit' style={{ color: "white" }}>
         Powered by{" "}
         <span>
-            <img src={muxLogo} />
+            <a target='_blank' rel='noopener noreferrer' href='https://mux.com'>
+                <img src={muxLogo} />
+            </a>
         </span>{" "}
         &{" "}
         <span>
-            <Logo fill='#2F7DEB' width={40} height={20} />
-        </span>{" "}
-        Chat
+            <a target='_blank' rel='noopener noreferrer' href='https://getstream.io'>
+                <Logo fill='#2F7DEB' width={40} height={20} />
+            </a>
+        </span>
     </p>
 );
 
