@@ -16,6 +16,15 @@
     background-color: #ffffff;
 }
 
+.str-chat__modal__inner {
+    background: #0d0f13 !important;
+}
+
+.str-chat.dark .str-chat__edit-message-form textarea {
+    background-color: rgba(0, 0, 0, 0.56);
+    color: white !important;
+}
+
 /* Header */
 .livestream.str-chat.dark .str-chat__header-livestream {
     background-color: #0d0f13;
