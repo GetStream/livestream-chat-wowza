@@ -7,6 +7,7 @@ import LivestreamContext from "contexts/LivestreamContext";
 // Components //
 import Credit from "components/Credit";
 import NotStreamingIcon from "components/Icons/not_streaming";
+import EnterURL from "components/EnterURL";
 
 class Player extends Component {
     static contextType = LivestreamContext;
@@ -38,6 +39,14 @@ class Player extends Component {
     render() {
         const { error } = this.state;
         const { provider, videoUrl, fallbackUrl } = this.context;
+        if (error) {
+            return null;
+        }
+
+        if (!videoUrl) {
+            return <EnterURL provider={provider} onChange={this.handleInputChange} />;
+        }
+
         return (
             <div className='player-wrapper'>
                 <ReactPlayer

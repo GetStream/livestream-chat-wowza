@@ -148,6 +148,7 @@ class LiveChat extends Component {
 
     render() {
         const { provider } = this.props;
+
         return (
             <div className={`chat-wrapper ${provider}`}>
                 <Chat client={chatClient} theme='livestream dark'>
@@ -177,6 +178,6 @@ class LiveChat extends Component {
 
 export default (props) => (
     <LivestreamContext.Consumer>
-        {({ provider }) => <LiveChat {...props} provider={provider} />}
+        {({ provider, videoUrl }) => <LiveChat {...props} provider={provider} videoUrl={videoUrl} />}
     </LivestreamContext.Consumer>
 );
