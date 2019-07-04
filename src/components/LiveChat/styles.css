@@ -56,7 +56,7 @@
 }
 
 .dark.str-chat .str-chat__message-simple-text-inner {
-    background-color: rgba(255, 255, 255 0.8);
+    background: rgba(255, 255, 255, 0.08) !important;
     color: white !important;
 }
 
@@ -110,6 +110,9 @@
     }
     .str-chat__message-simple-text-inner--is-emoji > p {
         color: white;
+    }
+    .dark.str-chat .str-chat__date-separator-line {
+        background-color: white !important;
     }
     .dark.str-chat .str-chat__message-simple .str-chat__message-attachment-card,
     .dark.str-chat .str-chat__player-wrapper {

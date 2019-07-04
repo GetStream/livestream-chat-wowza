@@ -1,11 +1,16 @@
 import React, { Component } from "react";
 import ReactPlayer from "react-player";
 
+// Contexts //
+import LivestreamContext from "contexts/LivestreamContext";
+
 // Components //
 import Credit from "components/Credit";
 import NotStreamingIcon from "components/Icons/not_streaming";
 
 class Player extends Component {
+    static contextType = LivestreamContext;
+
     constructor(props) {
         super(props);
 
@@ -32,7 +37,7 @@ class Player extends Component {
 
     render() {
         const { error } = this.state;
-
+        const { videoUrl, fallbackUrl } = this.context;
         return (
             <div className='player-wrapper'>
                 <ReactPlayer
@@ -40,11 +45,7 @@ class Player extends Component {
                     controls
                     muted
                     config={this.playerConfig}
-                    url={
-                        error
-                            ? "https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8"
-                            : "https://stream.mux.com/a5LFXNgjonhofUbuNQwV6OXPmnURfu21.m3u8"
-                    }
+                    url={error ? fallbackUrl : videoUrl}
                     playing
                     width='100%'
                     height='100%'
