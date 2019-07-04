@@ -16,10 +16,8 @@ class Player extends Component {
         super(props);
 
         this.state = {
-            error: false,
+            url: "",
         };
-
-        this.handleError = this.handleError.bind(this);
     }
 
     get playerConfig() {
@@ -30,21 +28,40 @@ class Player extends Component {
         };
     }
 
-    handleError() {
+    handleInputChange = (e) => {
         this.setState({
-            error: true,
+            url: e.target.value,
         });
-    }
+    };
+
+    setVideoURL = () => {
+        const { url } = this.state;
+        this.context.setVideo(url);
+    };
 
     render() {
-        const { error } = this.state;
-        const { provider, videoUrl, fallbackUrl } = this.context;
+        const { error, provider, handleError, videoUrl, useFallback } = this.context;
         if (error) {
-            return null;
+            return (
+                <div className='player-wrapper'>
+                    <div className='player-error'>
+                        <NotStreamingIcon width={64} height={64} fill='#fa4659' />
+                        <p style={{ color: "white" }}>No Longer Streaming</p>
+                        <Credit />
+                    </div>
+                </div>
+            );
         }
 
         if (!videoUrl) {
-            return <EnterURL provider={provider} onChange={this.handleInputChange} />;
+            return (
+                <EnterURL
+                    provider={provider}
+                    onChange={this.handleInputChange}
+                    setVideo={this.setVideoURL}
+                    useFallback={useFallback}
+                />
+            );
         }
 
         return (
@@ -54,11 +71,11 @@ class Player extends Component {
                     controls
                     muted
                     config={this.playerConfig}
-                    url={error ? fallbackUrl : videoUrl}
+                    url={videoUrl}
                     playing
                     width='100%'
                     height='100%'
-                    onError={this.handleError}
+                    onError={handleError}
                 />
                 <Credit />
             </div>
