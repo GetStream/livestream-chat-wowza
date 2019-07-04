@@ -149,7 +149,7 @@ class LiveChat extends Component {
     render() {
         const { provider } = this.props;
         return (
-            <div className='chat-wrapper'>
+            <div className={`chat-wrapper ${provider}`}>
                 <Chat client={chatClient} theme='livestream dark'>
                     <Channel channel={this.state.channel}>
                         <div className='emoji-wrapper'>

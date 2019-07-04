@@ -37,7 +37,7 @@ class Player extends Component {
 
     render() {
         const { error } = this.state;
-        const { videoUrl, fallbackUrl } = this.context;
+        const { provider, videoUrl, fallbackUrl } = this.context;
         return (
             <div className='player-wrapper'>
                 <ReactPlayer

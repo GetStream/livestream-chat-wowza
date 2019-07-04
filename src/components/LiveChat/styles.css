@@ -88,9 +88,12 @@
         top: 0;
         height: 100%;
         width: 100%;
-        background: linear-gradient(rgb(255, 143, 178) 0%, rgb(167, 151, 255) 50%, rgb(0, 229, 255) 100%);
+        background: linear-gradient(#ec1882 0%, #ff4a08 100%);
         mix-blend-mode: multiply;
         pointer-events: none;
+    }
+    .wowza .str-chat__main-panel:after {
+        background: linear-gradient(#fad961 0%, #f76b1c 100%);
     }
     .str-chat__message-simple-text-inner,
     .str-chat__message-simple-text-inner a {
