@@ -56,7 +56,7 @@
 }
 
 .dark.str-chat .str-chat__message-simple-text-inner {
-    background: rgba(255, 255, 255, 0.08) !important;
+    background: rgba(255, 255, 255, 0.12);
     color: white !important;
 }
 
