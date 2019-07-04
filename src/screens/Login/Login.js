@@ -7,6 +7,9 @@ import fetch from "utils/fetch";
 // Assets //
 import StreamLogo from "assets/stream_logo.svg";
 
+// Components //
+import ProviderSwitch from "components/ProviderSwitch";
+
 // Styles //
 import "./styles.css";
 
@@ -53,6 +56,8 @@ class Login extends Component {
                             value={username}
                             placeholder='Enter a username'
                         />
+                        <p className='choose-provider'>Choose your provider</p>
+                        <ProviderSwitch />
                         <button type='submit'>
                             {loading ? <Spinner size='16px' spinnerWidth={2} spinnerColor='white' /> : "Login"}
                         </button>

@@ -42,6 +42,18 @@
     font-weight: 300;
 }
 
+.login-card .choose-provider {
+    margin-top: 8px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    opacity: 0.64;
+    text-align: center;
+}
+
+.login-card .provider-switch {
+    margin-bottom: 16px;
+}
+
 /* Button */
 .login-card button {
     border: 0;

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Switch from "components/Switch";
+import ProviderSwitch from "components/ProviderSwitch";
 import LivestreamContext from "contexts/LivestreamContext";
 
 class ChatHeader extends Component {
@@ -18,7 +18,7 @@ class ChatHeader extends Component {
                     <span className='str-chat__header-livestream-left--livelabel'>Live</span>
                 </div>
                 <span style={{ flex: "1 1 auto" }} />
-                <Switch checked={provider === "wowza"} onChange={toggleProvider} />
+                <ProviderSwitch />
             </div>
         );
     }

@@ -17,7 +17,7 @@ const Credit = ({ provider }) => (
                 rel='noopener noreferrer'
                 href={provider === "mux" ? "https://mux.com" : "https://www.wowza.com/"}
             >
-                <img src={provider === "mux" ? muxLogo : wowzaLogo} />
+                <img className={`${provider}`} src={provider === "mux" ? muxLogo : wowzaLogo} />
             </a>
         </span>{" "}
         &{" "}
