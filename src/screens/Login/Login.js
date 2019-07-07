@@ -57,7 +57,7 @@ class Login extends Component {
                             value={username}
                             placeholder='Enter a username'
                         />
-                        <button type='submit'>
+                        <button className='primary' type='submit'>
                             {loading ? <Spinner size='16px' spinnerWidth={2} spinnerColor='white' /> : "Login"}
                         </button>
                     </form>
