@@ -6,12 +6,13 @@ import fetch from "utils/fetch";
 
 // Assets //
 import StreamLogo from "assets/stream_logo.svg";
+import wowzaLogo from "assets/wowza_logo.svg";
 
 // Components //
-import ProviderSwitch from "components/ProviderSwitch";
+import Credit from "components/Credit";
 
 // Styles //
-import "./styles.css";
+import "./styles.scss";
 
 class Login extends Component {
     state = {
@@ -56,13 +57,12 @@ class Login extends Component {
                             value={username}
                             placeholder='Enter a username'
                         />
-                        <p className='choose-provider'>Choose your provider</p>
-                        <ProviderSwitch />
                         <button type='submit'>
                             {loading ? <Spinner size='16px' spinnerWidth={2} spinnerColor='white' /> : "Login"}
                         </button>
                     </form>
                 </div>
+                <Credit />
             </div>
         );
     }

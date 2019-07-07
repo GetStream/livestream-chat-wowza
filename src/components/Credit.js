@@ -5,19 +5,14 @@ import LivestreamContext from "contexts/LivestreamContext";
 
 // Assets //
 import wowzaLogo from "assets/wowza_logo.svg";
-import muxLogo from "assets/mux_logo.png";
 import streamLogo from "assets/stream_logo.svg";
 
-const Credit = ({ provider }) => (
-    <p className='credit' style={{ color: "white" }}>
+const Credit = () => (
+    <p className='credit'>
         Powered by{" "}
         <span>
-            <a
-                target='_blank'
-                rel='noopener noreferrer'
-                href={provider === "mux" ? "https://mux.com" : "https://www.wowza.com/"}
-            >
-                <img className={`${provider}`} src={provider === "mux" ? muxLogo : wowzaLogo} />
+            <a target='_blank' rel='noopener noreferrer' href='https://www.wowza.com/'>
+                <img src={wowzaLogo} />
             </a>
         </span>{" "}
         &{" "}
@@ -29,6 +24,4 @@ const Credit = ({ provider }) => (
     </p>
 );
 
-export default () => (
-    <LivestreamContext.Consumer>{({ provider }) => <Credit provider={provider} />}</LivestreamContext.Consumer>
-);
+export default Credit;

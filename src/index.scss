@@ -55,20 +55,15 @@ p.credit {
     font-size: 16px !important;
     margin: 16px;
     color: rgba(255, 255, 255, 0.48) !important;
-}
 
-p.credit span {
-    margin: 0px 8px;
-}
+    & span {
+        margin: 0px 8px;
+    }
 
-p.credit img {
-    width: 100%;
-    max-width: 48px;
-}
-
-p.credit img.wowza {
-    width: 100%;
-    max-width: 32px;
+    & img {
+        width: 100%;
+        max-width: 32px;
+    }
 }
 
 #playerElement {
@@ -76,11 +71,18 @@ p.credit img.wowza {
     height: 0;
     padding: 0 0 56.25% 0;
 }
+
 .example-video {
     width: 100%;
     height: 100%;
     border-radius: 5px;
     overflow: hidden;
+
+    & img {
+        width: inherit;
+        height: inherit;
+        object-fit: cover;
+    }
 }
 
 .videoWrapper {
@@ -88,19 +90,14 @@ p.credit img.wowza {
     padding-bottom: 56.25%; /* 16:9 */
     padding-top: 25px;
     height: 0;
-}
-.videoWrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
 
-.example-video img {
-    width: inherit;
-    height: inherit;
-    object-fit: cover;
+    & iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
 }
 
 .str-chat__container {

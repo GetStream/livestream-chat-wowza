@@ -1,5 +1,5 @@
 import React from "react"; // eslint-disable-line no-unused-vars
-import "./App.css";
+import "./App.scss";
 import "stream-chat-react/dist/css/index.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
