@@ -40,7 +40,7 @@ class Player extends Component {
     };
 
     render() {
-        const { error, provider, handleError, videoUrl, useFallback } = this.context;
+        const { error, handleError, videoUrl, useFallback } = this.context;
         if (error) {
             return (
                 <div className='player-wrapper'>
@@ -54,14 +54,7 @@ class Player extends Component {
         }
 
         if (!videoUrl) {
-            return (
-                <EnterURL
-                    provider={provider}
-                    onChange={this.handleInputChange}
-                    setVideo={this.setVideoURL}
-                    useFallback={useFallback}
-                />
-            );
+            return <EnterURL onChange={this.handleInputChange} setVideo={this.setVideoURL} useFallback={useFallback} />;
         }
 
         return (
