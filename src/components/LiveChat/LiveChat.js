@@ -49,7 +49,6 @@ class LiveChat extends Component {
 
     async componentDidMount() {
         await this.state.channel.watch();
-        console.log(this.state.channel);
         this.state.channel.on("message.new", this.handleNewMessage);
         this.state.channel.on("reaction.new", this.handleNewReaction);
     }
