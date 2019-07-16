@@ -55,7 +55,7 @@ class Login extends Component {
                             name='username'
                             onChange={this.handleChange}
                             value={username}
-                            placeholder='Enter a username'
+                            placeholder='Pick a username'
                         />
                         <button className='primary' type='submit'>
                             {loading ? <Spinner size='16px' spinnerWidth={2} spinnerColor='white' /> : "Login"}
