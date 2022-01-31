@@ -67,7 +67,7 @@ class Login extends Component {
                             placeholder='Pick a username'
                         />
                         <button className='primary' type='submit'>
-                            {loading ? <Spinner size='16px' spinnerWidth={2} spinnerColor='white' /> : "Login"}
+                            {loading ? <Spinner radius='20px' stroke={2} color='white' /> : "Login"}
                         </button>
                     </form>
                 </div>

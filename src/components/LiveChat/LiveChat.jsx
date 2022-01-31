@@ -14,7 +14,7 @@ import ChatHeader from "./ChatHeader";
 import "./styles.scss";
 
 // Stream Chat //
-const chatClient = new StreamChat(import.meta.env.VITE_STREAM_KEY);
+const chatClient = StreamChat.getInstance(import.meta.env.VITE_STREAM_KEY);
 
 const rocketKeywords = ["boom", "rocket", "liftoff"];
 const loveKeywords = ["love", "like", "amazing"];
@@ -29,7 +29,7 @@ class LiveChat extends Component {
     constructor(props) {
         super(props);
 		if (!chatClient.userID) {
-			chatClient.setUser(
+			chatClient.connectUser(
 				{
 					...JSON.parse(localStorage.getItem("user")),
 				},
@@ -57,7 +57,6 @@ class LiveChat extends Component {
     componentWillUnmount() {
         this.state.channel.off("message.new", this.handleNewMessage);
         this.state.channel.off("reaction.new", this.handleNewReaction);
-        chatClient.disconnect();
     }
 
     checkForKeywords(keyword, text) {
@@ -129,7 +128,7 @@ class LiveChat extends Component {
         return (
             <div className='chat-wrapper'>
                 <Chat client={chatClient} theme='livestream dark'>
-                    <Channel channel={this.state.channel}>
+                    <Channel ReactionsList={() => null} channel={this.state.channel}>
                         <div className='emoji-wrapper'>
                             <Reward
                                 decay={1}
@@ -142,7 +141,7 @@ class LiveChat extends Component {
                         </div>
                         <Window hideOnThread>
                             <ChatHeader data={this.state.channel.data} />
-                            <MessageList Message={this.renderMessage} />
+                            <MessageList />
                             <MessageInput />
                         </Window>
                         <Thread Message={Message} fullWidth />
