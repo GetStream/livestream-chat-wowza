@@ -4,7 +4,7 @@
     "dev": "netlify dev",
     "build": "vite build",
     "serve": "vite preview",
-	"deploy": "netlify deploy"
+	"deploy": "yarn build && netlify deploy"
   },
   "dependencies": {
     "axios": "^0.25.0",
