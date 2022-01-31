@@ -29,7 +29,7 @@ class Login extends Component {
             loading: true,
         });
 
-		const response = await fetch('/api/token', {
+		const response = await fetch('/.netlify/functions/token', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
