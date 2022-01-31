@@ -1,0 +1,43 @@
+.login-root {
+    background-color: #14171d;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.login-card {
+    padding: 32px 24px;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-direction: column;
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.24);
+    border-radius: 24px;
+    max-width: 320px;
+    width: 100%;
+
+    & form {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    & img {
+        align-self: flex-start;
+    }
+
+    & p {
+        margin: 16px 0px 8px 0px;
+        font-family: "Roboto Mono", monospace;
+        font-size: 24px;
+        font-weight: 100;
+    }
+
+    & p > span {
+        color: #2f7deb;
+        font-weight: 300;
+    }
+}

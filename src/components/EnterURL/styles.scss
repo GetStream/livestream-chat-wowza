@@ -1,0 +1,21 @@
+.enter-url {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #0d0f13;
+
+    & > img {
+        max-width: 120px;
+        margin-bottom: 24px;
+    }
+
+    & > p {
+        font-family: "Roboto Mono", sans-serif;
+        margin-bottom: 24px;
+        color: white;
+        font-size: 24px;
+        font-weight: 400;
+    }
+}

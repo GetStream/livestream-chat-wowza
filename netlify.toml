@@ -1,0 +1,19 @@
+[[redirects]]
+from = '/*'
+status = 200
+to = '/index.html'
+
+[[redirects]]
+force = true
+from = '/api/*'
+status = 200
+to = '/.netlify/functions/:splat'
+
+[build]
+functions = "netlify/functions"
+
+[dev]
+framework = '#custom'
+command = 'vite'
+targetPort = 3000
+autoLaunch = true
