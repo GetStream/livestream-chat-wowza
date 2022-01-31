@@ -37,7 +37,7 @@ class Login extends Component {
 			mode: 'cors',
 			body: JSON.stringify({ username }) 
 		});
-		console.log(response);
+
 		const data = await response.json();
 
 		if (data) {
