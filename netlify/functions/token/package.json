@@ -10,6 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "nanoid": "^3.2.0",
-    "stream-chat": "^5.4.0"
+    "stream-chat": "^8.2.1"
   }
 }
